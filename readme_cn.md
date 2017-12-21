@@ -28,6 +28,8 @@
 3. 切图完成后可以清除切图辅助线（如果不清除也不影响渲染动画）。  
 4. 任何问题或建议欢迎联系xixi@bigxixi.com。  
 
+![demoGIF](https://raw.githubusercontent.com/bigxixi/ReadMe-Resources/master/AE-Slicer/aeslicerdemo.gif)
+
 ## 求打赏:
 如果您觉得本插件好用，欢迎打赏，感谢您的支持！  
 
