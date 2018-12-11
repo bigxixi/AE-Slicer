@@ -94,7 +94,18 @@
         var btn4 = grp2.add("button",undefined,btn4text);
             btn4.helpTip = btnhelptip4;
             btn4.alignment = ["right","center"];
-
+			
+	//去掉名字中的特殊字符
+	//remove bad characters in layer or comp name
+	function filterStr(str){
+	    var pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？%+_ ]");
+	    var specialStr = "";
+	    for(var i=0;i<str.length;i++){
+		specialStr += str.substr(i, 1).replace(pattern, ''); 
+	    }
+	    return specialStr;
+	}
+			
         var os = $.os.toLowerCase().indexOf('mac') >= 0 ? "mac": "win";
         //var theComp = app.project.activeItem;  
             btn1.onClick=function(){
@@ -373,7 +384,7 @@
                             osSlash = "\\";
                         }
                         
-                        var theLocation = File("~/Desktop/"+theComp.name+'_'+saveNameTip).saveDlg(savetip);
+                        var theLocation = File("~/Desktop/"+filterStr(theComp.name)+'_'+saveNameTip).saveDlg(savetip);
 
 						var res = [1,1];
 						if(app.project.activeItem.resolutionFactor != "1,1"){
@@ -421,7 +432,7 @@
                                     theLocation = theLocation + osSlash;
                                     var sliceFolder = new Folder(theLocation);
                                         sliceFolder.create();
-                                    var sliceLocation = theLocation + theComp.name + '_' + k;
+                                    var sliceLocation = theLocation + filterStr(theComp.name) + '_' + k;
                                     if(savePNG(tempComp,sliceLocation) == "R"){
                                         alert(RQerr);
                                         break;
@@ -434,7 +445,7 @@
                                 theLocation = theLocation + osSlash;
                                 var sliceFolder = new Folder(theLocation);
                                     sliceFolder.create();
-                                var sliceLocation = theLocation + theComp.name;
+                                var sliceLocation = theLocation + filterStr(theComp.name);
                                 if(savePNG(theComp,sliceLocation) == "R"){
                                     alert(RQerr);
                                 }
